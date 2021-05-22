@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .video_player {
+      position: relative;
+      width: 1000px;
+      height: 500px;
+      margin: 0 auto;
+    }
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1000px;
+      height: 500px;
+    }
+    .menu {
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      background-color: rgba(0,0,0,.5);
+      bottom: 0;
+      display: none;
+    }
+    .play {
+       position: absolute;
+       width: 60px;
+       height: 30px;
+       border: 1px solid white;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       border-radius: 10px;
+       margin-left: 20px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+    .time {
+      position: absolute;
+       width: 100px;
+       height: 30px;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       margin-left: 120px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+    .progress_bar {
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      background-color: #eee;
+      left: 0px;
+      top: -2px;
+    }
+    .progress_bar div {
+      position: absolute;
+      width: 0px;
+      height: 5px;
+      background-color: orange;
+      left: 0px;
+      top: 0;
+    }
+    .progress_bar i {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color:white;
+      left: 0px;
+      top: -2px;
+    }
+    .quick {
+       position: absolute;
+       width: 60px;
+       height: 30px;
+       border: 1px solid white;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       border-radius: 10px;
+       left: 500px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+    .quick_list {
+      position: absolute;
+      width: 80px;
+      height: 120px;
+      background-color: rgba(0, 0, 0, .5);
+      left: 500px;
+      top: -120px;
+      color: white;
+      display: none;
+    }
+    .quick_list li {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      list-style: none;
+      cursor: pointer;
+    }
+    .quick_list li:hover {
+      color: green;
+    }
+
+    .vol_add {
+       position: absolute;
+       width: 60px;
+       height: 30px;
+       border: 1px solid white;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       border-radius: 10px;
+       left: 600px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+    .vol_ins {
+       position: absolute;
+       width: 60px;
+       height: 30px;
+       border: 1px solid white;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       border-radius: 10px;
+       left: 680px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+    .full_screen {
+       position: absolute;
+       width: 60px;
+       height: 30px;
+       border: 1px solid white;
+       text-align: center;
+       line-height: 30px;
+       color: white;
+       border-radius: 10px;
+       left: 780px;
+       top: 50%;
+       margin-top: -15px;
+       cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="video_player">
+    <video src="video.mp4"></video>
+    <div class="menu">
+      <div class="play">播放</div>
+      <div class="time">0:00/0:00</div>
+      <!-- 进度条 -->
+      <div class="progress_bar">
+        <div></div>
+        <i></i>
+      </div>
+      <div class="quick">倍速</div>
+      <div class="quick_list">
+        <ul>
+          <li>正常</li>
+          <li>x 1.25</li>
+          <li>x 1.5</li>
+          <li>x 2</li>
+        </ul>
+      </div>
+      <div class="vol_add">音量加</div>
+      <div class="vol_ins">音量减</div>
+      <div class="full_screen">全屏</div>
+    </div>
+  </div>
+
+  <script>
+    var videoPlayer = document.getElementsByClassName('video_player')[0];
+    var video = document.getElementsByTagName('video')[0];
+    var menu = document.getElementsByClassName('menu')[0];
+    var play = document.getElementsByClassName('play')[0];
+    var time = document.getElementsByClassName('time')[0];
+    var progressBar = document.getElementsByClassName('progress_bar')[0];
+
+    // 获取倍速
+    var quick = document.getElementsByClassName('quick')[0];
+    var quickList = document.getElementsByClassName('quick_list')[0];
+
+    // 获取音量加和减
+    var volAdd = document.getElementsByClassName('vol_add')[0];
+    var volIns = document.getElementsByClassName('vol_ins')[0];
+
+    // 获取全屏按钮
+    var fullScreen = document.getElementsByClassName('full_screen')[0];
+    videoPlayer.onmouseenter = function() {
+      menu.style.display = 'block';
+    }
+    videoPlayer.onmouseleave = function() {
+      menu.style.display = 'none';
+    }
+
+    // 点击播放
+    play.onclick = function () {
+      // 暂停状态
+      if(video.paused) {
+        // 播放
+        video.play();
+        play.innerHTML = "暂停";
+      }else {
+        // 暂停
+        video.pause();
+        play.innerHTML = '播放';
+      }
+    }
+
+    // 鼠标移入bar事件
+    progressBar.onmouseenter = function() {
+      progressBar.style.height = '16px';
+      progressBar.style.top = '-16px';
+      progressBar.getElementsByTagName('div')[0].style.height = '16px';
+      progressBar.getElementsByTagName('i')[0].style.height = '20px';
+    }
+    // 鼠标移出bar事件
+    progressBar.onmouseleave = function() {
+      progressBar.style.height = '5px';
+      progressBar.style.top = '-2px';
+      progressBar.getElementsByTagName('div')[0].style.height = '5px';
+      progressBar.getElementsByTagName('i')[0].style.height = '10px';
+    }
+    // 点击进度条的某个位置进度到哪个位置
+    progressBar.onclick = function(e) {
+      // 点击位置的距离该元素开始位置的距离
+      var location = e.layerX;
+      // 当前元素的宽度带左右padding
+      var width = progressBar.clientWidth;
+      var targetTime = location / width * video.duration;
+      video.currentTime = targetTime;
+    }
+    // 点击倍速
+    quick.onclick = function() {
+      quickList.style.display = 'block';
+    }
+    // 倍速列表
+    quickList.onmouseleave = function() {
+      quickList.style.display = 'none';
+    }
+    // 倍速列表li
+    var liList = quickList.getElementsByTagName('ul')[0].getElementsByTagName('li');
+    for(let i = 0; i < liList.length; i++) {
+      liList[i].index = i;
+      liList[i].onclick = function() {
+        if(this.index === 0) { // 正常
+          video.playbackRate = 1;
+          quick.innerHTML = '倍速';
+        }else if(this.index === 1) { // 1.25
+          video.playbackRate = 1.25;
+          quick.innerHTML = 'x1.25';
+        }else if(this.index === 2) { // 1.5
+          video.playbackRate = 1.5;
+          quick.innerHTML = 'x1.5';
+        }else { // 2
+          video.playbackRate = 2;
+          quick.innerHTML = 'x2';
+        }
+      }
+    }
+    // 音量加
+    volAdd.onclick = function() {
+      video.volume = video.volume + 0.1 >=1 ? 1 : video.volume + 0.1;
+    }
+    // 音量减
+    volIns.onclick = function() {
+      video.volume = video.volume - 0.1 <= 0 ? 0 : video.volume - 0.1;
+    }
+    // 获取全屏按钮
+    fullScreen.onclick = function() {
+      var dom = document.documentElement;
+      // 全屏
+      dom.requestFullscreen();
+      // 播放器设置宽高
+      videoPlayer.style.width = window.screen.width + 'px';
+      videoPlayer.style.height = window.screen.height + 'px';
+
+      video.style.width = window.screen.width + 'px';
+      video.style.height = window.screen.height + 'px';
+    }
+    
+    // 时间
+    setInterval(() => {
+      // 获取全部时间
+      var total = video.duration;
+      // 获取当前时间
+      var nowTime = video.currentTime;
+      time.innerHTML = parseInt(nowTime / 60) + ":" + parseInt(nowTime % 60) + "/" + parseInt(total / 60) + ":" + parseInt(total % 60)
+
+      // 进度条的width
+      var width = nowTime / total * progressBar.clientWidth;
+      progressBar.getElementsByTagName('div')[0].style.width = width  + 'px';
+      progressBar.getElementsByTagName('i')[0].style.left = width + 'px';
+    },1000)
+  </script>
+</body>
+</html>
