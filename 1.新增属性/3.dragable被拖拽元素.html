@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .a {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- draggable 默认false 只有chrome和safari可以正常使用,firefox下不好用 -->
+  <div class="a" draggable="true"></div>
+  <!-- 拖拽的生命周期,拖拽的组成
+    1.拖拽开始,拖拽过程中,拖拽结束
+    2.被拖拽的物体,目标区域(目标元素)
+   
+  -->
+
+  <!-- img和a标签默认自带拖拽功能
+  <a href="http://www.baidu.com">百度</a>
+  <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ftg%2F035%2F063%2F726%2F3ea4031f045945e1843ae5156749d64c.jpg&refer=http%3A%2F%2Fyouimg1.c-ctrip.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620724192&t=f6e664732dd9a61a5332d293d7a158da" alt=""> -->
+
+  <script>
+    //  物体按下的瞬间是不会触发事件的
+    var oDragDiv = document.getElementsByClassName('a')[0];
+    var beginX = 0;
+    var beginY = 0;
+
+
+    oDragDiv.ondragstart = function (e) {
+      // e.dataTransfer.effectAllowed = 'link';   // 只能在ondragstart里边设置 // link copy move copyMove linkMove all
+      // e.dataTransfer.dropEffect = "link";     // 只能在ondrop里边设置
+      console.log(e)
+      beginX = e.clientX;
+      beginY = e.clientY;
+    }
+    // 拖拽过程中
+    // oDragDiv.ondrag = function(e) {
+    //   console.log('移动事件',e)
+    // }
+
+    // 拖拽结束事件
+    oDragDiv.ondragend = function(e) {
+      console.log('移动结束',e)
+      var x = e.clientX - beginX;
+      var y = e.clientY - beginY;
+      oDragDiv.style.left = oDragDiv.offsetLeft + x + 'px';
+      oDragDiv.style.top = oDragDiv.offsetTop + y + 'px';
+    }
+
+  </script>
+</body>
+
+</html>

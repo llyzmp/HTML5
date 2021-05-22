@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .a {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+    .target {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      left: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- draggable 默认false 只有chrome和safari可以正常使用,firefox下不好用 -->
+  <div class="a" draggable="true"></div>
+  <div class="target"></div>
+  <!-- 拖拽的生命周期,拖拽的组成
+    1.拖拽开始,拖拽过程中,拖拽结束
+    2.被拖拽的物体,目标区域(目标元素)
+   
+  -->
+
+  <!-- 所有的标签元素,当拖拽周期结束时,默认事件是回到原处 -->
+  <!-- 事件是由行为处罚的,但是一个行为不止触发一个事件 -->
+  <!-- ondragover -> 回到原处,
+            -> 执行drop事件 -->
+  <script>
+    //  物体按下的瞬间是不会触发事件的
+    var oDragDiv = document.getElementsByClassName('a')[0];
+  
+    oDragDiv.ondragstart = function (e) {
+     
+    }
+    // 拖拽结束事件
+    oDragDiv.ondragend = function(e) {
+   
+    }
+    //
+    var oDragTarget = document.getElementsByClassName('target')[0];
+    oDragTarget.ondragenter = function(e) { // 不是元素图形进入就触发的,而是拖拽的鼠标进入触发
+      console.log(e)
+    }
+    // 鼠标进入之后,不停的触发
+    oDragTarget.ondragover = function(e) {
+      //
+      e.preventDefault();
+      console.log(e);
+    }
+    // 鼠标进入后,离开的的事件
+    oDragTarget.ondragleave = function(e) {
+
+    }
+    // 在ondragover中加个阻止默认事件才会触发
+    oDragTarget.ondrop = function(e) {
+
+    }
+  </script>
+</body>
+
+</html>

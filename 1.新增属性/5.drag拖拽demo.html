@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box1 {
+      position: absolute;
+      width: 150px;
+      height: auto;
+      border: 1px solid;
+      padding-bottom: 10px;
+    }
+    .box2 {
+      position: absolute;
+      width: 150px;
+      left: 300px;
+      height: auto;
+      border: 1px solid;
+      padding-bottom: 10px;
+    }
+    li {
+      position: relative;
+      width: 100px;
+      height: 30px;
+      background-color: pink;
+      margin: 10px auto 0 auto;
+      list-style: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box1">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="box2"></div>
+
+  <script>
+    var dragDom;
+    var liList = document.getElementsByTagName('li');
+    for (var i = 0; i < liList.length; i++) {
+      liList[i].setAttribute('draggable',true);
+      liList[i].innerHTML = i;
+      liList[i].ondragstart = function(e) {
+        dragDom = e.target;
+      }
+    }
+    var box2 = document.getElementsByClassName('box2')[0];
+    box2.ondragover = function(e) {
+      e.preventDefault();
+    }
+    box2.ondrop = function(e) {
+      box2.appendChild(dragDom);
+      dragDom = null;
+      console.log(e)
+    }
+
+    var box1 = document.getElementsByClassName('box1')[0];
+    box1.ondragover = function(e) {
+      e.preventDefault();
+    }
+    box1.ondrop = function(e) {
+      box1.appendChild(dragDom);
+      dragDom = null;
+      console.log(e)
+    }
+  </script>
+</body>
+</html>
