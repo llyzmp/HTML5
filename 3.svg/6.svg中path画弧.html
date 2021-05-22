@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    path {
+      fill: transparent;
+      stroke: red;
+      stroke-width: 5px;
+    }
+  </style>
+</head>
+<body>
+  <svg width="1000" height="800" style="border: 1px solid;">
+    <!-- 知道两个点坐标,和长度x和长度y可以确定两个圆或者椭圆 -->
+    <!-- path画弧 M是从哪个点开始画 A起点 参数 (x方向半径, y方向半径, 旋转角度 大弧小弧(交叉的两个圆或椭圆取大弧还是小弧)  顺逆时针)    最后结束点坐标x,y  -->
+    <path d="M 200 100 A 100 50 90 0 1 150 200"></path>
+  </svg>
+</body>
+</html>

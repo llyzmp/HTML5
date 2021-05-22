@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    path {
+      /* 去掉填充 */
+      fill: transparent;
+      /* 描边的宽度 */
+      stroke-width: 5px;
+      /* 添加一个颜色 */
+      stroke: blue;
+    }
+  </style>
+</head>
+<body>
+  <svg width="1000" height="800" style="border: 1px solid;">
+    <!-- 默认填充 -->
+    <!-- path可以连续运动 -->
+    <!-- path标签 d属性中既有指令还有参数,可以画线(和canvas类似) -->
+    <!-- M类似于canvas中的moveTo L类似于lineTo -->
+    <!-- 大写字母是绝对位置, 小写字母是相对位置(基于上个点向右和向下移动的距离) -->
+    <!-- <path d="M 100 100 L 200 100 L 200 200 l 200 200"></path> -->
+
+    <!-- H是水平方向的距离(以绝对顶点横着走的距离), V是竖直方向的距离(以绝对顶点竖直走的距离) h以上个点为相对位置横着走的距离-->
+    <path d="M 100 100 H 200 V 200 h 200"></path>
+
+  </svg>
+</body>
+</html>

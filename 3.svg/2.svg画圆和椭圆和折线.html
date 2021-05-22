@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    circle {
+      fill: transparent;
+      stroke: green;
+      stroke-width: 5px;
+    }
+    ellipse {
+      fill: transparent;
+      stroke: red;
+      stroke-width: 5px;
+    }
+    polyline {
+      fill: transparent;
+      stroke: pink;
+      stroke-width: 5px;
+    }
+  </style>
+</head>
+<body>
+  <svg width="1000" height="800" style="border: 1px solid;">
+    <!-- 默认填充,可以写css样式取消填充 -->
+    <!-- 画圆 r是半径, cx是圆心的横坐标,cy是圆心纵坐标  -->
+    <circle r="50" cx="50" cy="220"></circle>
+    <!-- 椭圆 rx为横向半径, ry纵向半径, cx是横向圆心,cy是纵向圆心-->
+    <ellipse rx="100" ry="50" cx="400" cy="200"></ellipse>
+
+    <!-- 折线 每个坐标用逗号隔开-->
+    <polyline points="0 0, 100 100, 200 50, 150 50"></polyline>
+  </svg>
+</body>
+</html>

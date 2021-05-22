@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .line1 {
+      stroke: black;
+      stroke-width: 10px;
+      /* 是一个数组,可以无限添加,线条按照这个顺序变动 */
+      /* stroke-dasharray: 5px 10px 15px 20px; */
+      /* 向右偏10px */
+      /* stroke-dashoffset: 10px; */
+
+      stroke-dasharray: 200px;
+      stroke-dashoffset: 200px;
+      animation: move 1s linear infinite alternate-reverse;
+    }
+    /* 动画 */
+    @keyframes move {
+      0% {
+        stroke-dashoffset: 200px;
+      }
+      100% {
+        stroke-dashoffset: 0px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg width="500px" height="300px" style="border:1px solid">
+    <line x1="100" y1="100" x2="300" y2="100" class="line1"></line>
+
+  </svg>
+</body>
+</html>

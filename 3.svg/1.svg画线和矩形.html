@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .line1 {
+      /* 类似于canvas的stroke */
+      stroke: black;
+      stroke-width: 5px;
+    }
+    .line2 {
+      /* 类似于canvas的stroke */
+      stroke: green;
+      stroke-width: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG: 矢量图, 放大不会失真,适合大面积贴图,通常动画较少或者较简单, 标签和css去画 -->
+  <!-- canvas: 适合用于小面积的绘图,适合动画用js画 -->
+
+
+  <svg width="500" height="300" style="border: 1px solid;">
+    <!--  画线 -->
+    <line x1="100" y1="100" x2="200" y2="100" class="line1"></line>
+    <line x1="200" y1="100" x2="200" y2="200" class="line2"></line>
+
+
+    <!-- 画矩形 -->
+    <!-- x和y是坐标点,rx是x方向圆角,ry是y方向圆角 -->
+    <!-- svg中闭合的图形不用stroke -->
+    <rect width="100" height="50" x="0" y="0" rx="10" ry="10"></rect>
+  </svg>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    polyline {
+      fill: transparent;
+      stroke: green;
+      stroke-width: 5px;
+    }
+    polygon {
+      fill: transparent;
+      stroke: blue;
+      stroke-width: 5px;
+    }
+    text {
+      stroke: pink;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <svg width="1000" height="800" style="border: 1px solid;"> 
+    <!-- 对比折线,折线不会闭合 -->
+    <!-- <polyline points="0 0, 100 100, 200 50, 150 50"></polyline> -->
+
+    <!-- 多边形可以自己闭合 -->
+    <polygon points="0 0, 100 100, 200 50, 150 50"></polygon>
+
+    <!-- 文本标签 -->
+    <text x="300" y="300">我是最帅的</text>
+  </svg>
+</body>
+</html>
