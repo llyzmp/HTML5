@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      width: 500px;
+      height: 300px;
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+
+    //1.
+    // ctx.rotate(Math.PI / 6); // 旋转,以画布的左上角顶点旋转
+    // ctx.moveTo(100,100);
+    // ctx.lineTo(200, 100);
+    // ctx.stroke();
+
+    //2.
+    // 更改坐标系原点
+    // ctx.translate(100,100);
+    // ctx.rotate(Math.PI / 6); // 旋转,以画布的左上角顶点旋转
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(100, 0);
+    // ctx.stroke();
+
+
+    // 3.缩放 scale(x,y)
+    // x乘以系数,y乘以系数,顶点也缩放
+    ctx.scale(2,2);
+    ctx.strokeRect(100,100,100,100);
+    
+
+
+
+
+
+  </script>
+</body>
+</html>

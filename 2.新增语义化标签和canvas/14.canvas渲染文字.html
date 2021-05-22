@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="can" width="1000" height="800"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.font = '30px Georgia';
+    ctx.strokeRect(0,0,300,300);
+    // 文字描边
+    ctx.strokeText('我是最帅的',100,150);
+    // 文字填充
+    ctx.fillText('我是超级无敌的',200,220)
+  </script>
+</body>
+</html>

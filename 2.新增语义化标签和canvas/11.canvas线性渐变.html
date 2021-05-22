@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="can" width="1000" height="800"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    // 创建线性渐变有四个参数,x0,y0,x1,y1,   线性渐变的起始点还是画布的左上角
+    let bg = ctx.createLinearGradient(0,0,100,0);
+    // 添加颜色从0到1
+    bg.addColorStop(0, 'white');
+    // bg.addColorStop(0.5, 'pink');
+    bg.addColorStop(1, 'black');
+
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,200,100);
+
+  </script>
+</body>
+</html>

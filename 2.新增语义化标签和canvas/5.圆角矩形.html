@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>title</title>
+</head>
+
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+  <script>
+    var canvas = document.getElementById('can');
+    var ctx = canvas.getContext('2d');
+
+    // 起点A
+    ctx.moveTo(100,120);// 最后左上角多出来一点,要去掉,起点就要低一点
+    // B(x,y)  C(x,y), 圆角大小
+    ctx.arcTo(100,200,150,200,20);
+    ctx.arcTo(200,200,200,100,20);
+    ctx.arcTo(200,100,100,100,20);
+    ctx.arcTo(100,100,100,200,20);
+    ctx.fill(); // 填充
+    ctx.stroke();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="can" width="1000" height="800"></canvas>
+  <script>
+
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    // 创建一张图片
+    let img = new Image();
+    img.src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F-fo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa6efce1b9d16fdfa491650d6b28f8c5494ee7b94.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621950058&t=0b353ced2e8092815f57e33939b27672';
+    img.onload = function(){
+      ctx.beginPath();
+      // 改变原点
+      ctx.translate(100,100);
+      // 为图片创建一个纹理(为了是图片渲染出来) 有两个参数,把那个图片变成纹理,是否重复,  默认展示的坐标位置为画布左上角
+      let bg = ctx.createPattern(img, 'no-repeat');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, 600, 600);
+    }
+    
+
+  </script>
+</body>
+
+</html>

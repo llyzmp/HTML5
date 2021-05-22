@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="can" width="1000" height="800"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    // 线端样式(线的两端样式)
+    ctx.beginPath();
+    ctx.lineWidth = 15;
+    ctx.moveTo(100,100);
+    ctx.lineTo(200,100); 
+    // ctx.lineCap = 'butt'; // 默认
+    // ctx.lineCap = 'square'; // 方块
+    // ctx.lineCap('round'); // 圆形
+    ctx.lineTo(100,130);
+    // 两线交叉时
+    ctx.lineJoin = 'miter'; // 默认 尖的
+    ctx.miterLimit = 5;  // 限制尖的长度
+    // ctx.lineJoin = 'round'; 
+    // ctx.lineJoin = 'bevel'; // 砍掉
+
+    ctx.stroke();
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="500px" height="300px"
+    style="border:1px solid #aaa;display:block;margin:50px auto;"></canvas>
+
+  <script type="text/javascript">
+    window.onload = function () {
+
+      //获取canvas容器
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      // 线的宽度
+      // ctx.lineWidth = 10;
+      // ctx.moveTo(100, 100);
+      // ctx.lineTo(200, 100);
+
+      // // 忘记起点后,闭合(一笔下来),只要之前的线是连续的
+      // ctx.closePath()
+      // // 能把画好的图形显示出来
+      // ctx.stroke();
+
+
+      // // 重新开启一个路径
+      // ctx.beginPath();
+      // ctx.lineWidth = 5;
+      // ctx.moveTo(200,100);
+      // ctx.lineTo(200,200);
+      // // 使图形显示出来
+      // ctx.stroke();
+      // // 内容填充
+      // ctx.fill();
+
+
+
+      // 画矩形
+      // ctx.rect(100,100,200,100);
+      // 填充
+      // ctx.fill();
+      // ctx.stroke();
+
+      // 连带构建路径带画
+      // 100,100是起点, 200是宽,100是高
+      // ctx.strokeRect(100, 100, 200, 100);
+      
+      // //填充的矩形
+      // ctx.fillRect(100,100,200,100);
+    }
+  </script>
+</body>
+
+</html>

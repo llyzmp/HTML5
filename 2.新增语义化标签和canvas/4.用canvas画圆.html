@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画圆</title>
+</head>
+
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+  <script>
+    var canvas = document.getElementById('can');
+    var ctx = canvas.getContext('2d');
+
+    // 圆心(x,y), 半径r, 弧度(起始弧度,结束弧度),方向(顺时针,逆时针)
+    // x,y,半径,开始弧度,结束弧度,0(顺时针),1(逆时针)
+    ctx.arc(100, 100, 50, 0, Math.PI * 1.8, 0);
+    ctx.lineTo(100,100);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+  </script>
+</body>
+
+</html>

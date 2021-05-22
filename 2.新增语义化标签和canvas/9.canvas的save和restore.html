@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="can" width="500px" height="300px"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    // ctx.beginPath();
+    // // 改变一下顶点位置
+    // ctx.translate(100, 100);
+    // // 矩形旋转45度
+    // ctx.rotate(Math.PI / 4);
+    // ctx.strokeRect(0, 0, 100, 50);
+
+    // // 另一个矩形
+    // ctx.beginPath();
+    // // 填充色的矩形, 但是会和想象中的不太一样(理想中想要横着的,但是也旋转了,所以ctx.translate和ctx.strokeRect是全局的)
+    // ctx.fillRect(200, 0, 100, 50);
+
+
+    // 保存一下当前的坐标,平移和旋转状态等数据,为了画多个图形(save和restore)
+    ctx.save();
+    // 第一个矩形
+    ctx.beginPath();
+    // 改变一下顶点位置
+    ctx.translate(100, 100);
+    // 矩形旋转45度
+    ctx.rotate(Math.PI / 4);
+    ctx.strokeRect(0, 0, 100, 50);
+
+    // 另一个矩形
+    ctx.beginPath();
+    // 恢复所有的平移和旋转
+    ctx.restore();
+    // 填充色的矩形
+    ctx.fillRect(200, 0, 100, 50);
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="can" width="1000" height="800"></canvas>
+  <script>
+    let canvas = document.getElementById('can');
+    let ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    // 创建辐射渐变有6个参数,起始圆x0,y0,r1,  结束圆x1,y1,r2,   线性渐变的起始点还是画布的左上角
+    // 有很多种情况具体百度
+    let bg = ctx.createRadialGradient(100,100,30,100,100,100);
+    bg.addColorStop(0,'black');
+    bg.addColorStop(0.5,'yellow');
+    bg.addColorStop(1,'red');
+
+
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,300,300);
+
+  </script>
+</body>
+</html>
