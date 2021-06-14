@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script>
+    // 优化动画,均匀
+    // 因为requestAnimationFrame是每秒60帧,可以准时执行每一帧,兼容性差
+    // cancelAnimationFrame基本相当于clearTimeout
+    function move() {
+      var squeare = document.getElementById('main');
+      var timer = null;
+      if(squeare.offsetLeft >1000) {
+        cancelAnimationFrame(timer);
+        return
+      }
+      squeare.style.left = squeare.offsetLeft + 5 + "px";
+      timer = requestAnimationFrame(move);
+    }
+    move();
+  </script>
+</body>
+</html>
